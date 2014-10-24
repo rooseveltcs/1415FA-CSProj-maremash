@@ -2,10 +2,21 @@
 <resources>
 
     <string name="app_name">Calendar</string>
+    <string name="cally">CALLY</string>
     <string name="title_main_activity">Home</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_view_calendar">View Calendar</string>
     <string name="edit_message">Edit Text</string>
     <string name="you_clicked_it">You clicked it!</string>
+    <string name="action_new">New Action</string>
+    <string name="sunday">Sun</string>
+    <string name="monday">Mon</string>
+    <string name="tuesday">Tues</string>
+    <string name="wednesday">Wed</string>
+    <string name="thursday">Thurs</string>
+    <string name="friday">Fri</string>
+    <string name="saturday">Sat</string>
+    <string name="landscape">THIS IS THE LANDSCAPE VIEW</string>
+    
 
 </resources>
