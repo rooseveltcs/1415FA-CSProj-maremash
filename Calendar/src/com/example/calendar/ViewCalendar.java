@@ -32,8 +32,8 @@ public class ViewCalendar extends ActionBarActivity {
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 		int width = metrics.widthPixels;
 		int height = metrics.heightPixels;
-		//LinearLayout viewCalLayout = (LinearLayout) findViewById(R.id.viewCalendarLayout);
-		//int padding = viewCalLayout.getDividerPadding();
+		LinearLayout viewCalLayout = (LinearLayout) findViewById(R.id.viewCalendarLayout);
+		int padding = viewCalLayout.getPaddingRight()+ viewCalLayout.getPaddingLeft();
 		ArrayList<TextView> cells = new ArrayList<TextView>();
 		cells.add((TextView) findViewById(R.id.sundaytxt));		
 		cells.add((TextView) findViewById(R.id.mondaytxt));
@@ -43,7 +43,7 @@ public class ViewCalendar extends ActionBarActivity {
 		cells.add((TextView) findViewById(R.id.fridaytxt));
 		cells.add((TextView) findViewById(R.id.saturdaytxt));
 		for(int i = 0; i < cells.size(); i++){
-			cells.get(i).setWidth((width)/7);
+			cells.get(i).setWidth((width - padding)/7);
 			cells.get(i).setHeight(60);
 		}
 	}
