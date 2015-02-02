@@ -35,6 +35,10 @@ public class ViewCalendar extends ActionBarActivity {
 	private GregorianCalendar gregCurrentFirstDay;
 	private int daysInMonth;
 	private int firstDayOfMonth;
+	private int toDay;
+	private int toMonth;
+	private int toYear;
+	private ArrayList<Task> taskList;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +47,7 @@ public class ViewCalendar extends ActionBarActivity {
 		dateCells = settingUpDateArrayList();
 		monthTitle  = (TextView) findViewById(R.id.txtMonthTitle);
 		viewCalLayout = (RelativeLayout) findViewById(R.id.viewCalendarLayout);
-		gregCurrentFirstDay = new GregorianCalendar(TimeZone.getTimeZone("GMT"));			
+		gregCurrentFirstDay = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 		settingCurrentMonth();
 		settingWidth(dateCells);
 		settingDates(dateCells);
@@ -71,9 +75,12 @@ public class ViewCalendar extends ActionBarActivity {
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
-		if (id == R.id.action_new){
+		if (id == R.id.to_main){
     		Toast.makeText(ViewCalendar.this, "Btn Pressed", Toast.LENGTH_LONG).show();
 			startActivity(new Intent(ViewCalendar.this, MainActivity.class));
+			return true;
+		} else if (id == R.id.add_task){
+			startActivity(new Intent(ViewCalendar.this, AddTask.class));
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -81,7 +88,7 @@ public class ViewCalendar extends ActionBarActivity {
 	
     public boolean onCreateOptionsMenu(Menu menu){
     	MenuInflater inflater = getMenuInflater();
-    	inflater.inflate(R.menu.main, menu);
+    	inflater.inflate(R.menu.view_calendar, menu);
     	return super.onCreateOptionsMenu(menu);
     }
 	
@@ -170,7 +177,6 @@ public class ViewCalendar extends ActionBarActivity {
 	}
 	
 	
-	
 	private void settingWidth(ArrayList<LinearLayout> cells){
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);		
@@ -215,6 +221,12 @@ public class ViewCalendar extends ActionBarActivity {
 						current.setBackgroundColor(Color.parseColor("#ff9933"));
 					} else if (k%columns == 6){
 						current.setBackgroundColor(Color.parseColor("#ccff66"));
+					} 
+					
+					String currentDay = (String) current.getText().subSequence(0, current.getText().length());
+
+					if(currentDay.equals("" + toDay)){
+						current.setBackgroundColor(Color.parseColor("#cccccc"));
 					}
 				} catch (Exception e){
 					System.out.println("Was not a TextView");

@@ -4,10 +4,13 @@
     tools:context="com.example.calendar.ViewCalendar" >
 
 	<item
-        android:id="@+id/action_new"
-        android:orderInCategory="100"
+        android:id="@+id/to_main"
         android:title="@string/action_new"
         android:icon="@drawable/ic_launcher"
         app:showAsAction="ifRoom"/>
-
+	<item
+        android:id="@+id/add_task"
+        android:title="@string/action_new"
+        android:icon="@drawable/ic_add_task"
+        app:showAsAction="ifRoom"/>
 </menu>
